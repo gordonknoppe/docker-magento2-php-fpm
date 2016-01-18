@@ -19,4 +19,5 @@ RUN docker-php-ext-install \
         mcrypt \
         pdo_mysql \
         xsl \
-        zip
+        zip \
+        soap
