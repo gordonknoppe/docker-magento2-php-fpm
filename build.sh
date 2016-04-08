@@ -1,3 +1,3 @@
 #!/bin/bash
-VERSION=$1
+VERSION=7.0-fpm
 docker build -t ecg/magento2-php-fpm:$VERSION .
