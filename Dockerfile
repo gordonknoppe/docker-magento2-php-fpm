@@ -28,3 +28,6 @@ RUN pecl install xdebug-2.4.0
 RUN echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini
+
+RUN echo "memory_limit=2048M" > /usr/local/etc/php/conf.d/magento.ini \
+    && echo "realpath_cache_size=1M" >> /usr/local/etc/php/conf.d/magento.ini
