@@ -18,16 +18,20 @@ RUN docker-php-ext-install \
         intl \
         mbstring \
         mcrypt \
+        opcache \
         pdo_mysql \
         xsl \
         zip \
         soap
 
-RUN pecl install xdebug-2.4.0
+RUN pecl install xdebug-2.4.1
 
 RUN echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 RUN echo "memory_limit=2048M" > /usr/local/etc/php/conf.d/magento.ini \
-    && echo "realpath_cache_size=1M" >> /usr/local/etc/php/conf.d/magento.ini
+    && echo "realpath_cache_size=2M" >> /usr/local/etc/php/conf.d/magento.ini \
+    && echo "opcache.max_accelerated_files=200000" >> /usr/local/etc/php/conf.d/magento.ini \
+    && echo "opcache.memory_consumption=256M" >> /usr/local/etc/php/conf.d/magento.ini \
+    && echo "zlib.output_compression=1" >> /usr/local/etc/php/conf.d/magento.ini
