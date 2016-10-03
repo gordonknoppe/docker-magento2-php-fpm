@@ -1,4 +1,4 @@
-FROM php:7.0-fpm
+FROM php:7.0.11-fpm
 MAINTAINER Gordon Knoppe <gknoppe@magento.com>
 
 RUN apt-get update && apt-get install -y \
